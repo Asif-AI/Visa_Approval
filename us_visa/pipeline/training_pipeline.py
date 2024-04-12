@@ -2,22 +2,22 @@ import sys
 from us_visa.exception import USvisaException
 from us_visa.logger import logging
 
-from us_visa.components.data_ingestion import DataIngestion
+from us_visa.components.data_ingestion import (DataIngestion)
 #from us_visa.components.data_validation import DataValidation
 #from us_visa.components.data_transformation import DataTransformation
 #from us_visa.components.model_trainer import ModelTrainer
 #from us_visa.components.model_evaluation import ModelEvaluation
 #from us_visa.components.model_pusher import ModelPusher
 
-from us_visa.entity.config_entity import (DataIngestionConfig,
-                                          DataValidationConfig,
-                                          DataTransformationConfig,
-                                          ModelTrainerConfig,
-                                          ModelEvaluationConfig,
-                                          ModelPusherConfig)
+from us_visa.entity.config_entity import DataIngestionConfig
+#                                          DataValidationConfig,
+#                                          DataTransformationConfig,
+#                                          ModelTrainerConfig,
+#                                          ModelEvaluationConfig,
+#                                          ModelPusherConfig)
                                           
 
-#from us_visa.entity.artifact_entity import (DataIngestionArtifact,
+from us_visa.entity.artifact_entity import DataIngestionArtifact
 #                                            DataValidationArtifact,
  #                                           DataTransformationArtifact,
  #                                           ModelTrainerArtifact,
@@ -37,7 +37,7 @@ class TrainPipeline:
 
 
     
-    def start_data_ingestion(self):
+    def start_data_ingestion(self) -> DataIngestionArtifact:
         """
         This method of TrainPipeline class is responsible for starting data ingestion component
         """
@@ -54,10 +54,8 @@ class TrainPipeline:
         except Exception as e:
             raise USvisaException(e, sys) from e
 
-def run_pipeline(self, )-> None:
-    '''This method is responsible for running the pipeline'''
-    try:
-        data_ingestion_artifact = self.start_data_ingestion()
-
-    except Exception as e:
-        raise USvisaException(e, sys) from e
+    def run_pipeline(self, )-> None:
+        try:
+            data_ingestion_artifact = self.start_data_ingestion()
+        except Exception as e:
+            raise USvisaException(e, sys)
