@@ -2,7 +2,7 @@ import sys
 from us_visa.exception import USvisaException
 from us_visa.logger import logging
 
-from us_visa.components.data_ingestion import (DataIngestion)
+from us_visa.components.data_ingestion import DataIngestion
 #from us_visa.components.data_validation import DataValidation
 #from us_visa.components.data_transformation import DataTransformation
 #from us_visa.components.model_trainer import ModelTrainer
@@ -58,4 +58,4 @@ class TrainPipeline:
         try:
             data_ingestion_artifact = self.start_data_ingestion()
         except Exception as e:
-            raise USvisaException(e, sys)
+            raise USvisaException(e, sys) from e
