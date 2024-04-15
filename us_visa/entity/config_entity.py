@@ -70,6 +70,7 @@ class ModalPusherArtifact:
     bucket_name:str
     s3_model_path:str
 
+@dataclass
 
 
     
